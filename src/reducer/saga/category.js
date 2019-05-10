@@ -8,7 +8,7 @@ export function* loadDataSaga(action) {
 	yield put({ type: categoryActions.setBusy });
 
 	const response = yield call(loadCategoryItems);
-
+	console.log(response.data)
 	yield put({ type: categoryActions.setData, payload: response.data });
 
 	// Release busy state
