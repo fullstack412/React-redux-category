@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  TextField
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = () => ({
+  root: {
+    padding: 20
+  }
+});
 
 const SimpleDialog = props => {
   const [name, setName] = useState(props.name);
@@ -16,10 +26,17 @@ const SimpleDialog = props => {
 
   return (
     <Dialog onClose={handleClose} open={props.open}>
-      <TextField onChange={handleChange} value={name} />
-      <Button onClick={handleClose}>Ok</Button>
+      <DialogTitle>Set Item Name</DialogTitle>
+      <div className={props.classes.root}>
+        <TextField
+          label="Name"
+          onChange={handleChange}
+          value={name}
+        />
+        <Button variant="contained" onClick={handleClose}>Ok</Button>
+      </div>
     </Dialog>
   )
 };
 
-export default SimpleDialog;
+export default withStyles(styles)(SimpleDialog);

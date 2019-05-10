@@ -1,7 +1,6 @@
 {
   "data": [{
     "id": "i1",
-    "name": "1",
     "children": [{
       "id": "i1-1",
       "children": [{
@@ -11,7 +10,6 @@
     }]
   }, {
     "id": "i2",
-    "name": "2",
     "children": [{
       "id": "i2-1",
       "children": [{
@@ -27,7 +25,6 @@
     }]
   }, {
     "id": "i3",
-    "name": "3",
     "children": [{
       "id": "i3-1",
       "children": [{
@@ -37,7 +34,6 @@
     }]
   }, {
     "id": "i4",
-    "name": "4",
     "children": [{
       "id": "i4-1",
       "children": [{
@@ -47,7 +43,6 @@
     }]
   }, {
     "id": "i5",
-    "name": "5",
     "children": [{
       "id": "i5-1",
       "children": [{

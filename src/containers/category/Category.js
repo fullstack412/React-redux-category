@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Grid,
+  Typography
+} from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 
 import SimpleDialog from '../../components/Dialog';
 import { selectItem, changeItem } from '../../reducer/category';
@@ -23,31 +32,33 @@ const Category = props => {
   };
 
   return (
-    <div>
-      <p>{categoryName}</p>
-      <ul>
-        {items.map((item, id) => (
-          <li
-            key={id}
-            onClick={() => selectItem({no, id})}
-          >{
-            `${item.id} => ${item.name || categoryName} Item ${id + 1}`
-          }
-          <a
-            onClick={e => {
-              e.stopPropagation();
-              handleOpen(item.id, item.name);}
-            }
-          >Edit</a>
-          </li>
-        ))}
-      </ul>
+    <Grid item>
+      <Typography>{categoryName}</Typography>
+      <List>
+      {items.map((item, id) => {
+        const itemName = item.name ? item.name : `${categoryName} Item ${id + 1}`
+        return (
+          <ListItem key={id} button onClick={() => selectItem({ no, id})}>
+            <ListItemText primary={itemName} />
+            <ListItemText primary={`(${item.children.length})`} />
+            <ListItemIcon
+              onClick={e => {
+                e.stopPropagation();
+                handleOpen(item.id, item.name);}
+              }
+            >
+              <EditIcon />
+            </ListItemIcon>
+          </ListItem>
+        );
+      })}
+      </List>
       <SimpleDialog
         open={open}
         name={name}
         onClose={handleChange}
       />
-    </div>
+    </Grid>
   );
 };
 
