@@ -1,15 +1,15 @@
 import { call, takeEvery, put } from 'redux-saga/effects';
-import { sortBy } from 'lodash';
 
 import { actions as categoryActions } from '../category';
 import { loadCategoryItems } from '../../services';
 
-export function* loadImagesSaga(action) {
+export function* loadDataSaga(action) {
 	// Set state as busy
 	yield put({ type: categoryActions.setBusy });
 
 	const response = yield call(loadCategoryItems);
-	console.log(response);
+
+	yield put({ type: categoryActions.setData, payload: response.data });
 
 	// Release busy state
 	yield put({ type: categoryActions.unsetBusy });

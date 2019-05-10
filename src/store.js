@@ -3,13 +3,13 @@ import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import { persistStore } from 'redux-persist';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'react-router-redux';
 
 import combinedReducer from './reducer';
 import rootSaga from './reducer/saga';
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 const navMiddleware = routerMiddleware(history);
 const sagaMiddleware = createSagaMiddleware();
 

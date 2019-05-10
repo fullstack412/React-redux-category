@@ -18,3 +18,9 @@ class CategoryContainer extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = {
+  loadData
+};
+
+export default connect(null, mapDispatchToProps)(CategoryContainer);

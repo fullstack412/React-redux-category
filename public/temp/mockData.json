@@ -1,0 +1,48 @@
+{
+  "data": [{
+    "id": "i1",
+    "children": [{
+      "id": "i1-1",
+      "children": [{
+        "id": "i1-1-1",
+        "children": []
+      }]
+    }]
+  }, {
+    "id": "i2",
+    "children": [{
+      "id": "i2-1",
+      "children": [{
+        "id": "i2-1-1",
+        "children": []
+      }]
+    }]
+  }, {
+    "id": "i3",
+    "children": [{
+      "id": "i3-1",
+      "children": [{
+        "id": "i3-1-1",
+        "children": []
+      }]
+    }]
+  }, {
+    "id": "i4",
+    "children": [{
+      "id": "i4-1",
+      "children": [{
+        "id": "i4-1-1",
+        "children": []
+      }]
+    }]
+  }, {
+    "id": "i5",
+    "children": [{
+      "id": "i5-1",
+      "children": [{
+        "id": "i5-1-1",
+        "children": []
+      }]
+    }]
+  }]
+}
