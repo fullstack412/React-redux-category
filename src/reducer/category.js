@@ -6,7 +6,8 @@ export const actions = {
 	changeItem: 'category/CHANGE_ITEM',
 	setBusy: 'category/SET_BUSY',
 	unsetBusy: 'category/UNSET_BUSY',
-	setData: 'category/SET_DATA'
+	setData: 'category/SET_DATA',
+	setEditable: 'category/SET_EDITABLE'
 };
 
 export const loadData = createAction(actions.loadData);
@@ -15,11 +16,13 @@ export const setBusy = createAction(actions.setBusy);
 export const unsetBusy = createAction(actions.unsetBusy);
 export const setData = createAction(actions.setData);
 export const changeItem = createAction(actions.changeItem);
+export const setEditable = createAction(actions.setEditable);
 
 const defaultState = {
 	items: [],
 	path: [0],
 	isBusy: true,
+	editable: false
 };
 
 export default handleActions({
@@ -37,7 +40,7 @@ export default handleActions({
 		const { id, name } = action.payload;
 		let items = state.items;
 		let path = state.path;
-		
+
 		for (let i = 0; i < path.length; i ++) {
 			let found = false;
 			for (let j = 0; j < items[path[i]].children.length; j ++) {
@@ -53,5 +56,6 @@ export default handleActions({
 			items = items[path[i]].children;
 		}
 		return state;
-	}
+	},
+	[actions.setEditable]: (state, action) => ({ ...state, editable: action.payload })
 }, defaultState);

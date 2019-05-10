@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Switch } from '@material-ui/core';
 
 import PageWrapper from '../../components/PageWrapper';
 import Category from './Category';
-import { loadData } from '../../reducer/category';
+import { loadData, setEditable } from '../../reducer/category';
 
 class CategoryContainer extends React.Component {
   componentDidMount() {
@@ -13,11 +13,17 @@ class CategoryContainer extends React.Component {
   }
 
   render() {
-    const { isLoading, path, items } = this.props;
+    const { isLoading, path, items, editable } = this.props;
 
     return (
       <PageWrapper>
         <Typography variant="title">Category List</Typography>
+        <Typography>Editable</Typography>
+        <Switch
+          checked={editable}
+          onChange={e => this.props.setEditable(e.target.checked)}
+          value="editable"
+        />
         {isLoading && (
           <Typography> Loading... </Typography>
         )}
@@ -45,12 +51,14 @@ class CategoryContainer extends React.Component {
 }
 
 const mapDispatchToProps = {
-  loadData
+  loadData,
+  setEditable
 };
 
 const mapStateToProps = state => ({
   path: state.category.path,
   items: state.category.items,
+  editable: state.category.editable,
   isLoading: state.category.isBusy
 });
 
